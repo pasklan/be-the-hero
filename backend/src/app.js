@@ -3,6 +3,7 @@
  */
 const express = require('express');
 const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes');
 
 /**
@@ -41,9 +42,11 @@ app.use(cors());
  */
 app.use(express.json());
 app.use(routes);
- 
+app.use(errors());
+
+
  /**
  * Estabelece que a porta 3333 será usada para um servidor da aplicação
  * é necessário usar node <index.js> para iniciar a aplicação
  */
-app.listen(3333);
+module.exports = app;
